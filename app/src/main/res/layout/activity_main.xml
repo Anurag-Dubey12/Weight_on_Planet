@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".MainActivity">
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingLeft="100dp"
+        android:text="Weight Calculator"
+        android:textColor="@color/black"
+        android:textSize="30dp"
+        />
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+     >
+
+        <ImageSwitcher
+            android:id="@+id/imageSwitcher"
+            android:layout_width="match_parent"
+            android:layout_height="300dp" />
+
+        <ImageButton
+            android:id="@+id/btnLeft"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_centerVertical="true"
+            android:src="@drawable/previous" />
+
+        <ImageButton
+            android:id="@+id/btnRight"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:src="@drawable/next" />
+        <EditText
+            android:id="@+id/WeightText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Enter you weight"
+            android:layout_below="@id/imageSwitcher"
+            android:inputType="numberDecimal"
+            android:textColorHint="@color/black" />
+
+        <Button
+            android:id="@+id/submit_button"
+            android:layout_width="match_parent"
+            android:layout_below="@id/WeightText"
+            android:layout_height="64dp"
+            android:text="Submit" />
+
+        <TextView
+            android:id="@+id/PlanetNames"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_below="@id/submit_button"
+            android:textAlignment="center"
+            android:textColor="@color/black"
+            android:textSize="24sp"
+            />
+        <TextView
+            android:id="@+id/PlanetDes"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/PlanetNames"
+            android:textAlignment="center"
+            android:textColor="@color/black"
+            android:textSize="24sp"
+            />
+
+    </RelativeLayout>
+
+
+
+</LinearLayout>
+</ScrollView>
