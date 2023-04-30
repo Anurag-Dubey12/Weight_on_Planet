@@ -3,6 +3,7 @@ package com.example.weight
 import android.annotation.SuppressLint
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
 import android.widget.Button
 import android.widget.EditText
 import android.widget.ImageButton
@@ -112,29 +113,32 @@ val planetsdescription = arrayOf(
 
         submit.setOnClickListener{
             val weightcal = weighttext.text.toString().toDoubleOrNull()
-            if (WeightValue==null) {
-//                planetNames.text = WeightValue[index].toString()
-                Toast.makeText(this,"Please Enter your Weight",Toast.LENGTH_SHORT).show()
+            when{
+                weightcal==null->{
+                    Toast.makeText(this,"Please Enter your Weight",Toast.LENGTH_SHORT).show()
+                }
+                else->{
+                    var massonmercury = weightcal!! * 0.38
+                    WeightValue.add(massonmercury)
+                    var massonvenus = weightcal!! * 0.91
+                    WeightValue.add(massonvenus)
+                    var massonmars = weightcal!! * 0.38
+                    WeightValue.add(massonmars)
+                    val massOnJupiter = weightcal * 2.34
+                    WeightValue.add(massOnJupiter)
+                    val massOnSaturn = weightcal * 1.06
+                    WeightValue.add(massOnSaturn)
+                    val massOnUranus = weightcal * 0.92
+                    WeightValue.add(massOnUranus)
+                    val massOnNeptune = weightcal * 1.19
+                    WeightValue.add(massOnNeptune)
+                    val massOnPluto = weightcal * 0.06
+                    WeightValue.add(massOnPluto)
+                    planetNames.text= "Your weight on these planet is:"+WeightValue[index].toString()
+                }
             }
-            else{
-                var massonmercury = weightcal!! * 0.38
-                WeightValue.add(massonmercury)
-                var massonvenus = weightcal!! * 0.91
-                WeightValue.add(massonvenus)
-                var massonmars = weightcal!! * 0.38
-                WeightValue.add(massonmars)
-                val massOnJupiter = weightcal * 2.34
-                WeightValue.add(massOnJupiter)
-                val massOnSaturn = weightcal * 1.06
-                WeightValue.add(massOnSaturn)
-                val massOnUranus = weightcal * 0.92
-                WeightValue.add(massOnUranus)
-                val massOnNeptune = weightcal * 1.19
-                WeightValue.add(massOnNeptune)
-                val massOnPluto = weightcal * 0.06
-                WeightValue.add(massOnPluto)
-            }
-            planetNames.text= "Your weight on these planet is:"+WeightValue[index].toString()
+            WeightValue.clear()
+
         }
 
 

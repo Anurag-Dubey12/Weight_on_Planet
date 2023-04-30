@@ -68,7 +68,7 @@
             android:layout_below="@id/submit_button"
             android:textColor="@color/white"
             android:textAlignment="center"
-            android:text="Your Weight on This Planet is "
+            android:text="Your Weight Here "
             android:textSize="24sp"
             />
         <TextView
