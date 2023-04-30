@@ -10,10 +10,7 @@ import android.widget.ImageSwitcher
 import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
-import kotlin.time.nanoseconds
-
 class MainActivity : AppCompatActivity() {
-    lateinit var  Planetdescrip:Planet
     val planets= intArrayOf(R.drawable.mercury,R.drawable.venus,R.drawable.mars,R.drawable.jupiter,R.drawable.sature,R.drawable.uranus,R.drawable.neptune,R.drawable.pluto)
     var index=0
 //    val planetname= arrayOf("Mercury","Venus","Mars","Jupiter","Saturn","Uranus","Neptune","Pluto")
@@ -79,6 +76,7 @@ val planetsdescription = arrayOf(
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
         imageSwitcher = findViewById(R.id.imageSwitcher)
         btnLeft = findViewById(R.id.btnLeft)
         btnRight = findViewById(R.id.btnRight)
@@ -88,38 +86,35 @@ val planetsdescription = arrayOf(
         weighttext=findViewById(R.id.WeightText)
 
 
-        imageSwitcher?.setFactory({
+        imageSwitcher.setFactory({
             val imge=ImageView(applicationContext)
             imge.scaleType=ImageView.ScaleType.FIT_CENTER
             imge.setPadding(8,8,8,8)
             imge
         })
 
-        imageSwitcher?.setImageResource(planets[index])
-//        planetNames.text=planetname[index]
+        imageSwitcher.setImageResource(planets[index])
         displayPlanetInfo(index)
 
 
         btnRight.setOnClickListener {
             index=if(index+1<planets.size)index+1 else 0
-            imageSwitcher?.setImageResource(planets[index])
-            planetNames.text= WeightValue[index].toString()
+            imageSwitcher.setImageResource(planets[index])
+            planetNames.text= "Your weight on these planet is:"+WeightValue[index].toString()
             displayPlanetInfo(index)
-
-
         }
         btnLeft.setOnClickListener {
             index=if(index-1>=0)index-1 else 2
             imageSwitcher?.setImageResource(planets[index])
-            planetNames.text= WeightValue[index].toString()
+            planetNames.text="Your weight on these planet is:"+WeightValue[index].toString()
             displayPlanetInfo(index)
         }
+
         submit.setOnClickListener{
             val weightcal = weighttext.text.toString().toDoubleOrNull()
             if (WeightValue==null) {
 //                planetNames.text = WeightValue[index].toString()
                 Toast.makeText(this,"Please Enter your Weight",Toast.LENGTH_SHORT).show()
-
             }
             else{
                 var massonmercury = weightcal!! * 0.38
@@ -139,14 +134,14 @@ val planetsdescription = arrayOf(
                 val massOnPluto = weightcal * 0.06
                 WeightValue.add(massOnPluto)
             }
+            planetNames.text= "Your weight on these planet is:"+WeightValue[index].toString()
         }
+
+
     }
 
     private fun displayPlanetInfo(index: Int) {
         val planet = planetsdescription[index]
        planetDes.text=planet.name+"\n Mass :${planet.mass}kg\n Gravity of a Planet is ${planet.gravity}m/s²\n Resource Avaliable there ${planet.resources}"
     }
-
-
-
 }
